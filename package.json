@@ -1,0 +1,25 @@
+{
+  "name": "djs-steal-bot",
+  "version": "1.0.0",
+  "description": "A Discord.JS bot that allows you to steal emojis to your server.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amayas-dev/djs-steal-bot.git"
+  },
+  "author": "amayas#1402",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amayas-dev/djs-steal-bot/issues"
+  },
+  "homepage": "https://github.com/amayas-dev/djs-steal-bot#readme",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "dotenv": "^9.0.0",
+    "module-alias": "^2.2.2",
+    "pm2": "^4.5.6"
+  }
+}
