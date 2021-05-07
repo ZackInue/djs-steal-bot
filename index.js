@@ -1,7 +1,8 @@
 require('module-alias/register')
 require('dotenv');
+const prefix = process.env.BOT_PREFIX;
 
-const { Client, Collection, MessageEmbed } = require('discord.js')
+const { Client, Collection, MessageEmbed, Util } = require('discord.js')
 
 const client = new Client({
     disableEveryone: true
@@ -11,10 +12,12 @@ client.on('message', async ( message ) => {
 
     if(message.author.bot) return;
     if(!message.guild) return;
+    if(!message.content.startsWith(prefix) return;
     if(!message.member) message.member = await message.guild.fetchMember(message);
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const cmd = args.shift().toLowerCase();
 
-    if(message.content === process.env.BOT_PREFIX + 'steal') {
+    if(cmd === 'steal') {
 
         if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(':x: Invalid permissions.')
         if(!message.guild.me.hasPermission("MANAGE_EMOJIS")) return message.channel.send(':x: Bot has invalid permissions.')
@@ -42,7 +45,7 @@ client.on('message', async ( message ) => {
 client.on('ready', async ( ) => {
     client.user.setPresence({ 
         activity: { 
-            name: `${process.env.BOT_PREFIX}steal`,
+            name: `${prefix}steal`,
             type : 'LISTENING',
         }, status: 'dnd' 
     })
